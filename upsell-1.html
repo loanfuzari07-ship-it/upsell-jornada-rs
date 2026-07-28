@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Método Contacto Cero</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #faf8f4;
+      --warm-white: #f5f2ec;
+      --sand: #ede8df;
+      --sand-mid: #e2dbd0;
+      --taupe: #c9bfb0;
+      --brown-light: #a8937a;
+      --brown: #7d6650;
+      --brown-dark: #4e3d2d;
+      --accent: #8b6f4e;
+      --accent-warm: #b8895a;
+      --green: #3e7d50;
+      --green-light: #e8f5ec;
+      --red-soft: #c0443a;
+      --red-bg: #fdf1f0;
+      --text-main: #2c2319;
+      --text-muted: #7a6a58;
+      --text-light: #b0a090;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--cream);
+      color: var(--text-main);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: #b8460e;
+      border-bottom: none;
+      padding: 36px 24px 28px;
+      text-align: center;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+
+    .hero-tag .dot {
+      width: 6px; height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: blink 1.4s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.3;
+      margin-bottom: 22px;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: #ffd580;
+    }
+
+    .progress-wrap {
+      max-width: 440px;
+      margin: 0 auto;
+    }
+
+    .progress-track {
+      background: rgba(255,255,255,0.2);
+      border-radius: 100px;
+      height: 32px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 91%;
+      background: linear-gradient(90deg, #4a9e5c, #5bbf70);
+      border-radius: 100px;
+      position: relative;
+      box-shadow: 0 0 10px rgba(91,191,112,0.35);
+      animation: bar-breathe 2.5s ease-in-out infinite;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 12px;
+    }
+
+    .progress-bar::after {
+      content: '91%';
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.5px;
+    }
+
+    @keyframes bar-breathe {
+      0%, 100% { box-shadow: 0 0 8px rgba(91,191,112,0.3); }
+      50% { box-shadow: 0 0 18px rgba(91,191,112,0.55); }
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: var(--sand-mid);
+      margin: 0;
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      padding: 44px 24px;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .section-center { text-align: center; }
+
+    /* ── WARN SECTION ── */
+    .warn-section {
+      background: var(--warm-white);
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--brown-light);
+      margin-bottom: 12px;
+    }
+
+    .section-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--text-main);
+      line-height: 1.3;
+      margin-bottom: 20px;
+    }
+
+    .section-heading strong {
+      color: var(--red-soft);
+      font-weight: 600;
+    }
+
+    .body-text {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .mistake-box {
+      background: var(--red-bg);
+      border: 1px solid rgba(192,68,58,0.15);
+      border-left: 3px solid var(--red-soft);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 0;
+    }
+
+    .mistake-intro {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-main);
+      margin-bottom: 14px;
+    }
+
+    .mistake-intro span {
+      color: var(--red-soft);
+      font-weight: 600;
+    }
+
+    .mistake-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .mistake-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .mistake-list li::before {
+      content: '';
+      width: 5px; height: 5px;
+      background: var(--red-soft);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+
+    .warn-footnote {
+      font-size: 13px;
+      color: var(--text-main);
+      font-weight: 500;
+      border-top: 1px solid rgba(192,68,58,0.12);
+      margin-top: 14px;
+      padding-top: 12px;
+      line-height: 1.6;
+    }
+
+    /* ── PRODUCT SECTION ── */
+    .product-section {
+      background: var(--cream);
+    }
+
+    /* Mockup card */
+    .mockup-card {
+      background: var(--warm-white);
+      border: 1px solid var(--sand-mid);
+      border-radius: 18px;
+      padding: 28px 24px 22px;
+      max-width: 260px;
+      margin: 0 auto 28px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    .mockup-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 60px; height: 3px;
+      background: linear-gradient(90deg, var(--brown-light), var(--accent-warm));
+      border-radius: 0 0 4px 4px;
+    }
+
+    .mockup-emoji {
+      font-size: 36px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .mockup-label {
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--taupe);
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .mockup-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+
+    .mockup-divider {
+      height: 1px;
+      background: var(--sand-mid);
+      margin-bottom: 14px;
+    }
+
+    .mockup-pill {
+      display: inline-block;
+      background: var(--sand);
+      color: var(--brown);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 100px;
+      letter-spacing: 0.4px;
+    }
+
+    .product-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 600;
+      color: #1a5fa8;
+      margin-bottom: 8px;
+    }
+
+    .product-desc {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    /* Benefits */
+    .benefits {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+      text-align: left;
+    }
+
+    .benefit {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: var(--warm-white);
+      border: 1px solid var(--sand-mid);
+      border-radius: 12px;
+      padding: 15px 16px;
+      transition: border-color 0.2s;
+    }
+
+    .benefit:hover {
+      border-color: var(--taupe);
+    }
+
+    .benefit-icon {
+      flex-shrink: 0;
+      width: 24px; height: 24px;
+      background: var(--green-light);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px;
+      color: var(--green);
+      font-weight: 600;
+      margin-top: 1px;
+    }
+
+    .benefit-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--brown-dark);
+      margin-bottom: 3px;
+      letter-spacing: 0.2px;
+    }
+
+    .benefit-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* Banner */
+    .banner {
+      background: #b8460e;
+      border: none;
+      border-radius: 10px;
+      padding: 18px 20px;
+      font-size: 15px;
+      color: #fff;
+      line-height: 1.7;
+      margin-bottom: 0;
+      text-align: center;
+    }
+
+    .banner strong { color: #ffd580; }
+
+    /* ── CTA SECTION ── */
+    .cta-section {
+      background: var(--warm-white);
+      border-top: 1px solid var(--sand-mid);
+    }
+
+    .price-old {
+      font-size: 16px;
+      color: var(--red-soft);
+      text-decoration: line-through;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .price-por {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 400;
+      margin-bottom: 4px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .price-new {
+      font-family: 'Outfit', sans-serif;
+      font-size: 72px;
+      font-weight: 600;
+      color: #2e7d3e;
+      line-height: 1;
+      margin-bottom: 8px;
+      letter-spacing: -2px;
+    }
+
+    .price-note {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .cta-btn {
+      display: block;
+      width: 100%;
+      max-width: 400px;
+      margin: 24px auto 14px;
+      background: #1e7d34;
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      padding: 18px 20px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 18px rgba(30,125,52,0.35);
+    }
+
+    .cta-btn:hover {
+      background: #155c26;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(30,125,52,0.45);
+    }
+
+    .cta-btn:active {
+      transform: scale(0.99);
+    }
+
+    .guarantee {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .guarantee-dot {
+      width: 8px; height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .urgency {
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--text-main);
+      font-weight: 700;
+    }
+
+    .skip-link {
+      display: block;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-light);
+      text-decoration: underline;
+      cursor: pointer;
+      margin-top: 20px;
+      padding-bottom: 0;
+      transition: color 0.2s;
+    }
+
+    .skip-link:hover { color: var(--text-muted); }
+
+    /* Fade in animation */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero, .warn-section, .product-section, .cta-section {
+      animation: fadeUp 0.5s ease both;
+    }
+    .warn-section { animation-delay: 0.1s; }
+    .product-section { animation-delay: 0.15s; }
+    .cta-section { animation-delay: 0.2s; }
+
+    @media (max-width: 480px) {
+      .hero {
+        padding: 28px 16px 24px;
+      }
+
+      .hero-tag {
+        font-size: 10px;
+        letter-spacing: 1.2px;
+        padding: 5px 12px;
+      }
+
+      .hero-title {
+        font-size: 22px;
+        margin-bottom: 18px;
+      }
+
+      .progress-track {
+        height: 28px;
+      }
+
+      .section {
+        padding: 32px 16px;
+      }
+
+      .section-heading {
+        font-size: 22px;
+      }
+
+      .eyebrow {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+      }
+
+      .body-text {
+        font-size: 14px;
+      }
+
+      .mistake-box {
+        padding: 16px;
+      }
+
+      .mistake-intro {
+        font-size: 13px;
+      }
+
+      .mistake-list li {
+        font-size: 13px;
+      }
+
+      .product-title {
+        font-size: 26px;
+      }
+
+      .product-desc {
+        font-size: 14px;
+        margin-bottom: 24px;
+      }
+
+      .benefit {
+        padding: 12px 14px;
+        gap: 12px;
+      }
+
+      .benefit-title {
+        font-size: 13px;
+      }
+
+      .benefit-desc {
+        font-size: 12px;
+      }
+
+      .banner {
+        font-size: 13px;
+        padding: 14px 16px;
+      }
+
+      .price-old {
+        font-size: 15px;
+      }
+
+      .price-new {
+        font-size: 58px;
+        letter-spacing: -1.5px;
+      }
+
+      .price-note {
+        font-size: 12px;
+      }
+
+      .cta-btn {
+        font-size: 14px;
+        padding: 16px 20px;
+        max-width: 100%;
+      }
+
+      .guarantee {
+        font-size: 12px;
+      }
+
+      .urgency {
+        font-size: 12px;
+      }
+
+      .skip-link {
+        font-size: 11px;
+      }
+
+      .banner {
+        font-size: 14px;
+        padding: 16px 18px;
+        line-height: 1.65;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-tag">
+      <span class="dot"></span>
+      Espera — no cierres esta página
+    </div>
+    <h1 class="hero-title">
+      Solo un poco más:<br>
+      Tu pedido está <em>casi finalizado...</em>
+    </h1>
+    <div class="progress-wrap">
+      <div class="progress-track">
+        <div class="progress-bar"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- WARN -->
+  <section class="warn-section">
+    <div class="section section-center">
+      <p class="eyebrow" style="color:var(--text-main);">Antes de finalizar, necesito decirte algo importante:</p>
+      <h2 class="section-heading">
+        Puede que estés <strong>alejando a tu esposo</strong><br>sin darte cuenta…
+      </h2>
+      <p class="body-text">
+        Existe un error silencioso que la mayoría de las mujeres comete intentando salvar su matrimonio, y actúa de forma invisible.
+      </p>
+      <div class="mistake-box">
+        <p class="mistake-intro">
+          <span>El 91% de las mujeres</span> comete al menos uno de estos comportamientos:
+        </p>
+        <ul class="mistake-list">
+          <li>Envían demasiados mensajes</li>
+          <li>Exigen respuestas constantemente</li>
+          <li>Intentan hablar en el momento equivocado</li>
+          <li>Muestran desesperación sin notarlo</li>
+        </ul>
+        <p class="warn-footnote">
+          Y eso termina perjudicando la restauración y haciendo que él se cierre aún más.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PRODUCT -->
+  <section class="product-section">
+    <div class="section section-center" style="padding-left:0;padding-right:0;">
+      <p class="eyebrow" style="color:var(--text-main);font-size:16px;">Y fue por eso que creamos:</p>
+
+      <img src="images/mockup.webp" alt="Mockup del Método Contacto Cero" style="width:100%;display:block;margin:0 0 28px;" />
+
+      <div style="padding:0 24px;">
+      <h2 class="product-title">Método Contacto Cero</h2>
+      <p class="product-desc">
+        Un método simple, rápido y eficaz para que dejes de actuar desde la ansiedad, apliques el silencio estratégico y lo hagas extrañarte sin necesidad de perseguirlo.
+      </p>
+
+      <p class="eyebrow" style="margin-bottom:16px;color:var(--text-main);">Lo que vas a descubrir:</p>
+
+      <!-- Benefits -->
+      <div class="benefits">
+        <div class="benefit">
+          <div class="benefit-icon">✓</div>
+          <div>
+            <p class="benefit-title">El Error que Aleja</p>
+            <p class="benefit-desc">El comportamiento que puede estar alejándolo cada vez más sin que te des cuenta.</p>
+          </div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">✓</div>
+          <div>
+            <p class="benefit-title">Cómo Aplicar el Contacto Cero</p>
+            <p class="benefit-desc">Cuándo guardar silencio, por cuánto tiempo y cómo actuar sin parecer fría o distante.</p>
+          </div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">✓</div>
+          <div>
+            <p class="benefit-title">Cartas de Contacto</p>
+            <p class="benefit-desc">Mensajes listos para reabrir el espacio sin reclamar, presionar ni parecer desesperada.</p>
+          </div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">✓</div>
+          <div>
+            <p class="benefit-title">Señales de Reacercamiento</p>
+            <p class="benefit-desc">Cómo identificar cuando él comienza a acercarse de nuevo y qué hacer en ese momento.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="banner">
+        Solo con tener este recurso dentro de tu App, ya estás <strong>5 pasos adelante</strong> en la restauración de tu hogar.
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="section section-center">
+      <p style="font-size:12px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--brown-light); margin-bottom:6px;">Condición exclusiva solo en esta página</p>
+      <p style="font-size:22px; color:var(--accent); margin-bottom:12px; line-height:1;">↓</p>
+      <p class="price-old">De $27.00</p>
+      <p class="price-por">Por solo</p>
+      <p class="price-new">$7.90</p>
+      <p class="price-note">pago único · acceso inmediato dentro del App</p>
+
+      <div class="guarantee">
+        <span class="guarantee-dot"></span>
+        30 días de garantía total sin preguntas
+      </div>
+
+      <p class="urgency">⚠ Aprovecha ahora: no volverás a ver este precio.</p>
+
+      <!-- HOTMART - Sales Funnel Widget -->
+      <div id="hotmart-sales-funnel"></div>
+      <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
+      <script>
+      checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel')
+      </script>
+      <!-- HOTMART - Sales Funnel Widget -->
+    </div>
+  </section>
+
+</body>
+</html>
